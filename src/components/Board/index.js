@@ -37,8 +37,9 @@ function Board() {
       }
     };
     document.addEventListener("keydown", handleKeyDown);
-
-    document.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, [undo, redo]);
 
   useLayoutEffect(() => {
