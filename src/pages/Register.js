@@ -5,7 +5,7 @@ const Register = () => {
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const API_BASE_URL = process.env.REACT_APP_API_URL || "https://your-backend.onrender.com";
+  const API_BASE_URL = "https://your-backend.onrender.com";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,7 +17,7 @@ const Register = () => {
     setError("");
 
     try {
-      const res = await fetch(`${API_BASE_URL}/users/register`, {
+      const res = await fetch(`${API_BASE_URL}/canvas/users/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
