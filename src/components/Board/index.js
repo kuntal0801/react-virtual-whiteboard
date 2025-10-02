@@ -4,6 +4,7 @@ import rough from "roughjs";
 import boardContext from "../../store/board-context";
 import { TOOL_ACTION_TYPES, TOOL_ITEMS } from "../../constants";
 import toolboxContext from "../../store/toolbox-context";
+import {updateCanvasAPI} from "../../utils/api";
 
 function Board() {
   const canvasRef = useRef();
@@ -99,6 +100,10 @@ function Board() {
 
   const handleMouseUp = () => {
     boardMouseUpHandler();
+    const canvasId = window.location.pathname.split("/").pop();
+    updateCanvasAPI(canvasId, elements).catch((error) => {
+      console.error("Failed to sync canvas:", error);
+    });
   };
 
   return (
