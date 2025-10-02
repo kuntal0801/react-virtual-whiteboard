@@ -5,8 +5,8 @@ const Register = () => {
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3030";
-  
+  const API_BASE_URL = process.env.REACT_APP_API_URL || "https://your-backend.onrender.com";
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
