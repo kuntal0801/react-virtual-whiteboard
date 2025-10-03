@@ -12,7 +12,7 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
-  const API_BASE_URL = "https://your-backend.onrender.com";
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://your-backend.onrender.com/canvas";
 
   // Fetch user + canvases
   useEffect(() => {
@@ -24,7 +24,7 @@ const Profile = () => {
 
     const fetchProfileAndCanvases = async () => {
       try {
-        const profileRes = await fetch(`${API_BASE_URL}/canvas/users/profile`, {
+        const profileRes = await fetch(`${API_BASE_URL}/users/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const profileData = await profileRes.json();
@@ -55,7 +55,7 @@ const Profile = () => {
   // Logout
   const handleLogout = async () => {
     const token = localStorage.getItem("token");
-    await fetch(`${API_BASE_URL}/canvas/users/logout`, {
+    await fetch(`${API_BASE_URL}/users/logout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

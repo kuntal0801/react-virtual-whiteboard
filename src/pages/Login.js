@@ -6,7 +6,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const API_BASE_URL = "https://your-backend.onrender.com";
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://your-backend.onrender.com/canvas";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

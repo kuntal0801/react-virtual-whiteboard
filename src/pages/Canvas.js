@@ -8,8 +8,8 @@ import Toolbar from "../components/Toolbar";
 import Board from "../components/Board";
 import Toolbox from "../components/Toolbox";
 
-const SOCKET_URL = "https://your-backend.onrender.com";
-const API_URL = "https://your-backend.onrender.com";
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || "https://your-backend.onrender.com";
+const API_URL = process.env.REACT_APP_API_URL || "https://your-backend.onrender.com";
 
 const socket = io(SOCKET_URL, { transports: ["websocket"] });
 
